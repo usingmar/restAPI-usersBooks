@@ -7,25 +7,25 @@ import {
 
 
 @Entity()
-export class User{
+export class User_{
     @PrimaryGeneratedColumn("uuid")
     id: number;
 
     @Column({type: 'varchar',length: 50, nullable: false})
-    firstName: string;
+    firstname: string;
 
     @Column({type: 'varchar', length: 50, nullable: false})
-    lastName: string;
+    lastname: string;
 
     @Column({type: 'int2'})
     age: number;
 
     @Column({type: 'boolean'})
-    isFree: boolean;
+    isfree: boolean;
 
     @Column({type: 'date', nullable: false})
-    createdAt: Date;
+    createdat: string;
     
     @Column({type: 'date', nullable: false})
-    updatedAt: Date;
+    updatedat: string;
 }

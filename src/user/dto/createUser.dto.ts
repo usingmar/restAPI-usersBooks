@@ -13,12 +13,12 @@ export class CreateUserDTO{
     @IsDefined()
     @IsString()
     @IsByteLength(1,49)
-    firstName: string;
+    firstname: string;
 
     @IsDefined()
     @IsString()
     @IsByteLength(1,49)
-    lastName: string;
+    lastname: string;
 
     @IsDefined()
     @IsInt()
@@ -28,5 +28,5 @@ export class CreateUserDTO{
 
     @IsDefined()
     @IsBoolean()
-    isFree: boolean
+    isfree: boolean
 }

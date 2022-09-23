@@ -12,12 +12,12 @@ export class UpdateUserDTO{
     @IsOptional()
     @IsString()
     @IsByteLength(1,49)
-    firstName: string;
+    firstname: string;
 
     @IsOptional()
     @IsString()
     @IsByteLength(1,49)
-    lastName: string;
+    lastname: string;
 
     @IsOptional()
     @IsInt()
@@ -27,6 +27,6 @@ export class UpdateUserDTO{
 
     @IsOptional()
     @IsBoolean()
-    isFree: boolean
+    isfree: boolean
     
 }
