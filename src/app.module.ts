@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import * as dotenv from 'dotenv'
+import { BookModule } from './book/book.module';
 dotenv.config();
 
 console.log(process.env.DATABASE_URL);
@@ -13,6 +14,7 @@ console.log(process.env.DATABASE_URL);
     url: process.env.DATABASE_URL,
     autoLoadEntities: true
     }),
-    UserModule
+    UserModule,
+    BookModule
 ]})
 export class AppModule {}

@@ -1,7 +1,9 @@
+import { Book } from "src/book/book.entity";
 import { 
     Column,
     Entity, 
-    OneToMany, 
+    JoinTable, 
+    ManyToMany, 
     PrimaryGeneratedColumn 
 } from "typeorm";
 
@@ -28,4 +30,18 @@ export class User_{
     
     @Column({type: 'date', nullable: false})
     updatedat: string;
+
+    @ManyToMany(() => Book, (book) => book.users, {
+        cascade: ['insert', 'update', 'remove']
+    })
+    @JoinTable({
+        name: 'user_book',
+        joinColumn: {
+            name: 'userid'
+        },
+        inverseJoinColumn: {
+            name: 'bookid'
+        }
+    })
+    books: Book[]
 }

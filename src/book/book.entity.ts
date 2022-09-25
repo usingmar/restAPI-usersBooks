@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { User_ } from "src/user/user.entity";
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Book{
@@ -13,4 +14,7 @@ export class Book{
 
     @Column({ type: 'date', nullable: false})
     createdat: string;
+
+    @ManyToMany(() => User_, (user) => user.books)
+    users: User_[];
 }

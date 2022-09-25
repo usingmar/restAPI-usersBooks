@@ -1,5 +1,6 @@
 import { IsDefined } from "@nestjs/class-validator";
 import {
+    IsArray,
     IsBoolean,
     IsByteLength,
     IsInt,
@@ -7,6 +8,7 @@ import {
     Max,
     Min
 } from "class-validator";
+import { Book } from "src/book/book.entity";
 
 
 export class CreateUserDTO{
@@ -29,4 +31,8 @@ export class CreateUserDTO{
     @IsDefined()
     @IsBoolean()
     isfree: boolean
+
+    @IsDefined()
+    @IsArray()
+    books: Book[]
 }
