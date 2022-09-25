@@ -5,7 +5,6 @@ import { BaseEntity, Column, CreateDateColumn, Entity, ManyToMany, PrimaryGenera
 @Entity()
 @ObjectType()
 export class Book extends BaseEntity {
-
   @PrimaryGeneratedColumn({ type: 'integer' })
   @Field(type => ID)
   id: number;

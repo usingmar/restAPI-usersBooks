@@ -5,18 +5,18 @@ import { IsArray, IsByteLength, IsInt, IsOptional, IsString } from 'class-valida
 export class UpdateBookDTO {
   @IsOptional()
   @IsString()
-  @Field({nullable: true})
+  @Field({ nullable: true })
   title?: string;
 
   @IsOptional()
   @IsString()
   @IsByteLength(1, 49)
-  @Field({nullable: true})
+  @Field({ nullable: true })
   author?: string;
 
   @IsOptional()
   @IsArray()
   @IsInt({ each: true })
-  @Field(type => [Int], {nullable: true})
+  @Field(type => [Int], { nullable: true })
   users: number[];
 }

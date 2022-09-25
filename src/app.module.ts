@@ -1,11 +1,13 @@
+import { ApolloDriver } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserModule } from './user/user.module';
-import * as dotenv from 'dotenv';
-import { BookModule } from './book/book.module';
 import { GraphQLModule } from '@nestjs/graphql';
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import * as dotenv from 'dotenv';
 import { join } from 'path';
+
+import { BookModule } from './book/book.module';
+import { UserModule } from './user/user.module';
+
 dotenv.config();
 
 console.log(process.env.DATABASE_URL);
@@ -14,7 +16,7 @@ console.log(process.env.DATABASE_URL);
   imports: [
     GraphQLModule.forRoot({
       driver: ApolloDriver,
-      autoSchemaFile: join(process.cwd(), 'src/scheme.gql')
+      autoSchemaFile: join(process.cwd(), 'src/scheme.gql'),
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',

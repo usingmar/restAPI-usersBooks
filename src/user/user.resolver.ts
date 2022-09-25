@@ -1,4 +1,5 @@
-import { Resolver, Query, Args, ID, Mutation, Int } from '@nestjs/graphql';
+import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
+
 import { CreateUserDTO } from './dto/createUser.dto';
 import { UpdateUserDTO } from './dto/updateUser.dto';
 import { User_ } from './user.entity';
@@ -32,7 +33,7 @@ export class UserResolver {
   }
 
   @Mutation(returns => User_)
-  deleteUser(@Args('id', {type: () => Int}) id: number): Promise<User_>{
+  deleteUser(@Args('id', { type: () => Int }) id: number): Promise<User_> {
     return this.userService.delete(id);
   }
 }

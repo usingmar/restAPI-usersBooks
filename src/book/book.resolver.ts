@@ -1,8 +1,9 @@
-import { Args, Int, Mutation, Query, Resolver } from "@nestjs/graphql";
-import { Book } from "./book.entity";
-import { BookService } from "./book.service";
-import { CreateBookDTO } from "./dto/createBook.dto";
-import { UpdateBookDTO } from "./dto/updateBook.dto";
+import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
+
+import { Book } from './book.entity';
+import { BookService } from './book.service';
+import { CreateBookDTO } from './dto/createBook.dto';
+import { UpdateBookDTO } from './dto/updateBook.dto';
 
 @Resolver(of => Book)
 export class BookResolver {
@@ -32,7 +33,7 @@ export class BookResolver {
   }
 
   @Mutation(returns => Book)
-  deleteBook(@Args('id', {type: () => Int}) id: number): Promise<Book>{
+  deleteBook(@Args('id', { type: () => Int }) id: number): Promise<Book> {
     return this.bookService.delete(id);
   }
 }

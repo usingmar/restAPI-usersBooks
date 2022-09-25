@@ -1,9 +1,10 @@
-import { Injectable, HttpException, forwardRef, Inject, NotFoundException } from '@nestjs/common';
+import { forwardRef, HttpException, Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Book } from 'src/book/book.entity';
 import { BookService } from 'src/book/book.service';
 import { checkNumberOfProperties } from 'src/utils/validators';
 import { Repository } from 'typeorm';
+
 import { CreateUserDTO } from './dto/createUser.dto';
 import { PutUserDTO } from './dto/putUser.dto';
 import { UpdateUserDTO } from './dto/updateUser.dto';
@@ -57,11 +58,10 @@ export class UserService {
     if (DTO.hasOwnProperty('books')) {
       for (const item of DTO.books) books2.push(await this.bookService.exists(item));
     }
-    const newUser = 
-    await this.userRepository.save({
+    const newUser = await this.userRepository.save({
       id: _id,
       ...rest,
-      books: books2
+      books: books2,
     });
     return this.findOne(_id);
   }
