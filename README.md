@@ -18,13 +18,13 @@ git clone {repository URL}
 cd restAPI-usersBooks
 ```
 
-##Starting container
+## Starting container
 
 ```
 docker-compose up
 ```
 
-##Usage
+## Usage
 
 To check out API with HTTP requests:
 Run Postman or other tool (localhost:8080) with endpoints: users, books.
