@@ -32,7 +32,7 @@ export class UserService {
         {
           message: `User with id: ${_id} does not exists`,
         },
-        400,
+        404,
       );
     }
     return user;
@@ -40,37 +40,36 @@ export class UserService {
 
   async create(DTO: CreateUserDTO): Promise<User_> {
     const newUser = {
-        ...DTO,
-        //createdat: new Date().toISOString().split('T')[0],
-        //updatedat: new Date().toISOString().split('T')[0]
-      };
-  
-      const created = await this.userRepository.save(newUser);
-      return this.findOne(created.id);
+      ...DTO,
+    };
+
+    const created = await this.userRepository.save(newUser);
+    return this.findOne(created.id);
   }
 
   async update(_id: number, DTO: PutUserDTO | UpdateUserDTO): Promise<User_> {
     checkNumberOfProperties(DTO);
-    const aim = await this.findOne(_id);
-    const {books, ...rest} = DTO;
+    await this.findOne(_id);
+    const { books, ...rest } = DTO;
     const books2: Book[] = [];
+    console.log(_id);
+
     if (DTO.hasOwnProperty('books')) {
       for (const item of DTO.books) books2.push(await this.bookService.exists(item));
     }
-
+    const newUser = 
     await this.userRepository.save({
       id: _id,
       ...rest,
-      books: books2,
-      //createdat: aim.createdat,
-      //updatedat: new Date().toISOString().split('T')[0]
+      books: books2
     });
     return this.findOne(_id);
   }
 
-  async delete(_id: number): Promise<void> {
-    await this.findOne(_id);
+  async delete(_id: number): Promise<User_> {
+    const aim = await this.findOne(_id);
     await this.userRepository.delete(_id);
+    return aim;
   }
 
   async exists(id: number) {

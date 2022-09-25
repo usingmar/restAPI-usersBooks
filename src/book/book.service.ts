@@ -41,7 +41,6 @@ export class BookService {
   async create(DTO: CreateBookDTO): Promise<Book> {
     const newBook = {
       ...DTO,
-      //createdat: new Date().toISOString().split('T')[0]
     };
 
     const created = await this.bookRepository.save(newBook);
@@ -51,8 +50,8 @@ export class BookService {
   async update(_id: number, DTO: UpdateBookDTO | PutBookDTO): Promise<Book> {
     checkNumberOfProperties(DTO);
     const aim = await this.findOne(_id);
-    const {users, ...rest} = DTO; 
-    const users2: User_[] = []
+    const { users, ...rest } = DTO;
+    const users2: User_[] = [];
     if (DTO.hasOwnProperty('users')) {
       for (const item of DTO.users) users2.push(await this.userService.exists(item));
     }
@@ -61,14 +60,15 @@ export class BookService {
       rest,
       users: users2,
       createdat: aim.createdat,
-      updatedat: new Date().toISOString().split('T')[0]
+      updatedat: new Date().toISOString().split('T')[0],
     });
     return this.findOne(_id);
   }
 
-  async delete(_id: number): Promise<void> {
-    await this.findOne(_id);
+  async delete(_id: number): Promise<Book> {
+    const aim = await this.findOne(_id);
     await this.bookRepository.delete(_id);
+    return aim;
   }
 
   async exists(id: number): Promise<Book> {

@@ -1,39 +1,35 @@
-import {
-    IsArray,
-    IsBoolean,
-    IsByteLength,
-    IsInt,
-    IsOptional,
-    IsString,
-    Max,
-    Min
-} from "class-validator";
-import { Book } from "src/book/book.entity";
+import { Field, InputType, Int } from '@nestjs/graphql';
+import { IsArray, IsBoolean, IsByteLength, IsInt, IsOptional, IsString, Max, Min } from 'class-validator';
 
-export class UpdateUserDTO{
-    @IsOptional()
-    @IsString()
-    @IsByteLength(1,49)
-    firstname?: string;
+@InputType("UpdateUserInput")
+export class UpdateUserDTO {
+  @IsOptional()
+  @IsString()
+  @IsByteLength(1, 49)
+  @Field({nullable: true})
+  firstname?: string;
 
-    @IsOptional()
-    @IsString()
-    @IsByteLength(1,49)
-    lastname?: string;
+  @IsOptional()
+  @IsString()
+  @IsByteLength(1, 49)
+  @Field({nullable: true})
+  lastname?: string;
 
-    @IsOptional()
-    @IsInt()
-    @Min(1)
-    @Max(200)
-    age?: number;
+  @IsOptional()
+  @IsInt()
+  @Min(1)
+  @Max(200)
+  @Field(type => Int, {nullable: true})
+  age?: number;
 
-    @IsOptional()
-    @IsBoolean()
-    isfree?: boolean
+  @IsOptional()
+  @IsBoolean()
+  @Field({nullable: true})
+  isfree?: boolean;
 
-    @IsOptional()
-    @IsArray()
-    @IsInt({each: true})
-    books?: number[]
-    
+  @IsOptional()
+  @IsArray()
+  @IsInt({ each: true })
+  @Field(type => [Int], {nullable: true})
+  books?: number[];
 }

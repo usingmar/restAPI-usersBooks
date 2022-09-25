@@ -1,29 +1,28 @@
-import { IsArray, IsBoolean, IsByteLength, IsDefined, IsInt, IsString, Max, Min } from "class-validator";
+import { IsArray, IsBoolean, IsByteLength, IsDefined, IsInt, IsString, Max, Min } from 'class-validator';
 
-export class PutUserDTO{
-    @IsDefined()
-    @IsString()
-    @IsByteLength(1,49)
-    firstname: string;
+export class PutUserDTO {
+  @IsDefined()
+  @IsString()
+  @IsByteLength(1, 49)
+  firstname: string;
 
-    @IsDefined()
-    @IsString()
-    @IsByteLength(1,49)
-    lastname: string;
+  @IsDefined()
+  @IsString()
+  @IsByteLength(1, 49)
+  lastname: string;
 
-    @IsDefined()
-    @IsInt()
-    @Min(1)
-    @Max(200)
-    age: number;
+  @IsDefined()
+  @IsInt()
+  @Min(1)
+  @Max(200)
+  age: number;
 
-    @IsDefined()
-    @IsBoolean()
-    isfree: boolean
+  @IsDefined()
+  @IsBoolean()
+  isfree: boolean;
 
-    @IsDefined()
-    @IsArray()
-    @IsInt({each: true})
-    books: number[]
-    
+  @IsDefined()
+  @IsArray()
+  @IsInt({ each: true })
+  books: number[];
 }

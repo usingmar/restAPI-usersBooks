@@ -1,22 +1,16 @@
-import { IsArray, IsByteLength, IsDefined, IsInt, IsOptional, IsString } from 'class-validator';
-import { User_ } from 'src/user/user.entity';
+import { Field, InputType } from '@nestjs/graphql';
+import { IsByteLength, IsDefined, IsString } from 'class-validator';
 
-export class CreateBookDTO{
-    @IsDefined()
-    @IsString()
-    title: string;
+@InputType('CreateBookInput')
+export class CreateBookDTO {
+  @IsDefined()
+  @IsString()
+  @Field()
+  title: string;
 
-    @IsDefined()
-    @IsString()
-    @IsByteLength(1,49)
-    author: string;
-
-/*     @IsDefined()
-    @IsArray()
-    users?: User_[] */
-
-    /* @IsOptional()
-    @IsArray()
-    @IsInt({each: true})
-    users: number[] */
+  @IsDefined()
+  @IsString()
+  @IsByteLength(1, 49)
+  @Field()
+  author: string;
 }
