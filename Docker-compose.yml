@@ -1,0 +1,24 @@
+version: '2.6.1'
+services:
+  api:
+    # image: it_company_management/nestjs
+    build:
+      dockerfile: Dockerfile
+      context: ./
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgres://postgres:root@postgres:5432/db
+      NODE_ENV: development
+      PORT: 5432
+    ports:
+      - '5432:3000'
+
+  postgres:
+    image: postgres:14-alpine
+    ports:
+      - '35000:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: db

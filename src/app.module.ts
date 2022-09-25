@@ -2,15 +2,10 @@ import { ApolloDriver } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import * as dotenv from 'dotenv';
 import { join } from 'path';
 
 import { BookModule } from './book/book.module';
 import { UserModule } from './user/user.module';
-
-dotenv.config();
-
-console.log(process.env.DATABASE_URL);
 
 @Module({
   imports: [

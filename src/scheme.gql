@@ -2,14 +2,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Book {
-  id: ID!
-  title: String!
-  author: String!
-  createdat: String!
-  users: [User_!]!
-}
-
 type User_ {
   id: ID!
   firstname: String!
@@ -19,6 +11,14 @@ type User_ {
   createdat: String!
   updatedat: String!
   books: [Book!]!
+}
+
+type Book {
+  id: ID!
+  title: String!
+  author: String!
+  createdat: String!
+  users: [User_!]!
 }
 
 type Query {
