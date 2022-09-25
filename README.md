@@ -12,7 +12,7 @@
 git clone {repository URL}
 ```
 
-## Going to main directory
+## Move to main directory
 
 ```
 cd restAPI-usersBooks
