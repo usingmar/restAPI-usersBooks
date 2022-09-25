@@ -1,16 +1,18 @@
 import { Book } from "src/book/book.entity";
 import { 
     Column,
+    CreateDateColumn,
     Entity, 
     JoinTable, 
     ManyToMany, 
-    PrimaryGeneratedColumn 
+    PrimaryGeneratedColumn, 
+    UpdateDateColumn
 } from "typeorm";
 
 
 @Entity()
 export class User_{
-    @PrimaryGeneratedColumn("uuid")
+    @PrimaryGeneratedColumn({type: 'integer'})
     id: number;
 
     @Column({type: 'varchar',length: 50, nullable: false})
@@ -25,11 +27,11 @@ export class User_{
     @Column({type: 'boolean'})
     isfree: boolean;
 
-    @Column({type: 'date', nullable: false})
-    createdat: string;
-    
-    @Column({type: 'date', nullable: false})
-    updatedat: string;
+    @CreateDateColumn({type: 'date'})
+    createdat: Date;
+
+    @UpdateDateColumn({type: 'date'})
+    updatedat: Date
 
     @ManyToMany(() => Book, (book) => book.users, {
         cascade: ['insert', 'update', 'remove']

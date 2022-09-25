@@ -14,6 +14,7 @@ import {
 import { Book } from "./book.entity";
 import { BookService } from "./book.service";
 import { CreateBookDTO } from "./dto/createBook.dto";
+import { PutBookDTO } from "./dto/putBook.dto";
 import { UpdateBookDTO } from "./dto/updateBook.dto";
 
 @Controller('/books')
@@ -37,7 +38,7 @@ export class BookController{
     }
 
     @Put(':id')
-    async update(@Param('id', ParseIntPipe) id: number ,@Body() DTO: CreateBookDTO): Promise<Book>{
+    async update(@Param('id', ParseIntPipe) id: number ,@Body() DTO: PutBookDTO): Promise<Book>{
         return await this.bookService.update(id, DTO);
     }
 

@@ -1,5 +1,4 @@
-import { IsArray, IsByteLength, IsInt, IsObject, IsOptional, IsString } from "class-validator";
-import { User_ } from "src/user/user.entity";
+import { IsArray, IsByteLength, IsInt, IsOptional, IsString } from 'class-validator';
 
 export class UpdateBookDTO{
     @IsOptional()
@@ -13,5 +12,6 @@ export class UpdateBookDTO{
 
     @IsOptional()
     @IsArray()
-    users?: User_[]   
+    @IsInt({each: true})
+    users: number[]
 }

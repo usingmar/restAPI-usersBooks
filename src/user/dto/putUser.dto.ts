@@ -1,17 +1,6 @@
-import { IsDefined } from "@nestjs/class-validator";
-import {
-    IsArray,
-    IsBoolean,
-    IsByteLength,
-    IsInt,
-    IsString,
-    Max,
-    Min
-} from "class-validator";
-import { Book } from "src/book/book.entity";
+import { IsArray, IsBoolean, IsByteLength, IsDefined, IsInt, IsString, Max, Min } from "class-validator";
 
-
-export class CreateUserDTO{
+export class PutUserDTO{
     @IsDefined()
     @IsString()
     @IsByteLength(1,49)
@@ -31,4 +20,10 @@ export class CreateUserDTO{
     @IsDefined()
     @IsBoolean()
     isfree: boolean
+
+    @IsDefined()
+    @IsArray()
+    @IsInt({each: true})
+    books: number[]
+    
 }

@@ -33,6 +33,7 @@ export class UpdateUserDTO{
 
     @IsOptional()
     @IsArray()
-    books?: Book[]
+    @IsInt({each: true})
+    books?: number[]
     
 }
