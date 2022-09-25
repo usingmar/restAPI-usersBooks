@@ -30,3 +30,5 @@ To check out API with HTTP requests:
 Run Postman or other tool (localhost:8080) with endpoints: users, books.
 
 To check out graphql playground - localhost:8080/graphql
+
+Unit tests were not implemented
